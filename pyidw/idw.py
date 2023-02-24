@@ -57,6 +57,7 @@ def crop_resize(input_raster_filename='',
     croped_data, croped_transform = mask(dataset=elevation,
                                          shapes=BD.geometry,
                                          crop=True,
+                                         pad=True,
                                          all_touched=True)
     croped_meta = elevation.meta
     croped_meta.update({
