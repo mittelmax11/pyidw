@@ -108,10 +108,12 @@ def crop_resize(input_raster_filename='',
 def blank_raster(extent_shapefile=''):
     calculationExtent = gpd.read_file(extent_shapefile)
 
-    minX = floor(calculationExtent.bounds.minx)
-    minY = floor(calculationExtent.bounds.miny)
-    maxX = ceil(calculationExtent.bounds.maxx)
-    maxY = ceil(calculationExtent.bounds.maxy)
+    buffer = 200
+    minX = floor(calculationExtent.bounds.minx) - buffer
+    minY = floor(calculationExtent.bounds.miny) - buffer
+    maxX = ceil(calculationExtent.bounds.maxx) + buffer
+    maxY = ceil(calculationExtent.bounds.maxy) + buffer
+    
     longRange = sqrt((minX - maxX)**2)
     latRange = sqrt((minY - maxY)**2)
 
