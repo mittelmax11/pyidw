@@ -57,7 +57,6 @@ def crop_resize(input_raster_filename='',
     croped_data, croped_transform = mask(dataset=elevation,
                                          shapes=BD.geometry,
                                          crop=True,
-                                         pad=True,
                                          all_touched=True)
     croped_meta = elevation.meta
     croped_meta.update({
@@ -108,7 +107,7 @@ def crop_resize(input_raster_filename='',
 def blank_raster(extent_shapefile=''):
     calculationExtent = gpd.read_file(extent_shapefile)
 
-    buffer = 200
+    buffer = 1000
     minX = floor(calculationExtent.bounds.minx) - buffer
     minY = floor(calculationExtent.bounds.miny) - buffer
     maxX = ceil(calculationExtent.bounds.maxx) + buffer
